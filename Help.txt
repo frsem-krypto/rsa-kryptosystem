@@ -1,23 +1,30 @@
-﻿1.Aktuellste Version des Verzeichnisses downloaden:
-cd rsa-kryptosystem
+﻿Link zum Projekt steht unten ↓
 
-Projekt downloaden:
-git clone https://github.com/PixelProfi/rsa-kryptosystem.git
+  1.Richtiges Verzeichnis Wählen:
+    cd rsa-kryptosystem
 
-Datei pullen(aus dem Internet aktualisieren):
-git pull
+   !! ACHTUNG: NICHT den kompletten Pfad zur Datei, wie z.B. G:\Seminar\rsa-kryptosystem ,  sondern NUR den Ordner rsa-kryptosystem angeben !!
 
-2. Datei öffnen und bearbeiten.
+  2.Projekt downloaden:
+    git clone https://github.com/PixelProfi/rsa-kryptosystem.git
 
-3. commiten:
-git commit -m "Info"
+  3.Die zu bearbeitende Datei "fokusieren":
+    git add >entsprechende Datei<
 
-4.Bei Fehlermeldung sicherheitshalber noch einmal pullen.
+  4.Datei pullen (aus dem Internet aktualisieren):
+    git pull
 
-5.Datei pushen (In die Cloud wieder hochladen):
-git push
--> Benutzername
--> Password
+  5.Datei öffnen und bearbeiten.
+
+  6.commiten:
+    git commit -m "Info/Veränderung"
+
+  !! Bei Fehlermeldung sicherheitshalber noch einmal pullen. !!
+
+  7.Datei pushen (In die Cloud wieder hochladen):
+    git push
+    -> Benutzername
+    -> Password
 
 
 
