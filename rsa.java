@@ -1,3 +1,4 @@
+.
 package de.freiburg_seminar.krypto;
 
 import java.math.BigInteger;
