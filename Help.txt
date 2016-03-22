@@ -3,7 +3,7 @@
   1.Richtiges Verzeichnis Wählen:
     cd rsa-kryptosystem
 
-   !! ACHTUNG: NICHT den kompletten Pfad zur Datei, wie z.B. G:\Seminar\rsa-kryptosystem ,  sondern NUR den Ordner rsa-kryptosystem angeben !!
+   !! HINWEIS: NICHT den kompletten Pfad zur Datei, wie z.B. G:\Seminar\rsa-kryptosystem ,  sondern NUR den Ordner rsa-kryptosystem angeben !!
 
   2.Projekt downloaden:
     git clone https://github.com/PixelProfi/rsa-kryptosystem.git
