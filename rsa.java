@@ -52,7 +52,7 @@ public class RSA {
 	public final int schluesselGroesse = 100;
 	
 	public Schluesselpaar erzeugeSchluessel() {
-		// TODO: 
+		// TODO: Methode implementieren 
 	}
 	
 	public OeffentlicherSchluessel extrahiereOeffSchluessel();
