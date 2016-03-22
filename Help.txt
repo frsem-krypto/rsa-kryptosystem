@@ -1,9 +1,12 @@
-﻿Link zum Projekt steht unten ↓
+﻿Links stehen unten ↓
 
   1.Richtiges Verzeichnis Wählen:
     cd rsa-kryptosystem
 
-   !! HINWEIS: NICHT den kompletten Pfad zur Datei, wie z.B. G:\Seminar\rsa-kryptosystem ,  sondern NUR den Ordner rsa-kryptosystem angeben !!
+   !! WINDOW-HINWEIS: NICHT den kompletten Pfad zur Datei, wie z.B. cd G:\Seminar\rsa-kryptosystem, sondern Schritt für Schritt, in diesem Fall:
+               cd G:
+               cd Seminar
+               cd rsa-kryptosystem !!
 
   2.Projekt downloaden:
     git clone https://github.com/PixelProfi/rsa-kryptosystem.git
@@ -36,5 +39,9 @@ git pull
 git push
 strg + x = abbrechen
 strg + s = speichern
+
+PS: Bei dem Download von Git auf Windows bekommt man auch eine eigene Git-Konsole (bei der Installation noch am besten Desktop-Icon anwählen),
+die einige Vorteile, unter anderem, der Übersichtlichkeit bietet. Ihr müsst euch z.B. nur einmal mit GitHub anmelden.
+Hier der Link zur installationsdatei für Windows: https://git-scm.com/download/win
 
 **** Gerne Vervollständigen, falls etwas fehlt :) ****
