@@ -1,4 +1,4 @@
-package de.freiburg_seminar.krypto;
+﻿package de.freiburg_seminar.krypto;
 
 import java.math.BigInteger;
 import java.io.*;
@@ -6,7 +6,7 @@ import java.io.*;
 
 /*
  * TODO: Wie werden Texte vor dem Chiffrieren kodiert?
- * TODO: Wie werden Schlüssel und andere Binärdaten gespeichert
+ * TODO: Wie werden SchlÃ¼ssel und andere BinÃ¤rdaten gespeichert
  * (BASE64, hex?)
  * 
  * TODO: Woher kommt der Zufall? 
@@ -15,7 +15,7 @@ import java.io.*;
  */
 public class RSA {
 
-	public class Schluessel
+	public abstract class Schluessel
 	{
 		/**
 		 * 
@@ -43,19 +43,57 @@ public class RSA {
 		}
 		
 		public void speichere(File file){
-			//TODO Schluessel speichern
+			//TODO Schluessel abspeichern
+			//Hierzu kann dateiEndung() verwendet werden
 		}
-	};
+		public abstract String dateiEndung();
+	}
+	
+	public class PrivaterSchluessel extends Schluessel{
+
+		public PrivaterSchluessel(BigInteger N, BigInteger exponent) {
+			super(N, exponent);
+		}
+		
+		public PrivaterSchluessel(File file) {
+				//TODO Sicherstellen, dass die Datei einen privaten Schluessel enthaelt und einlesen
+			}
+
+		@Override
+		public String dateiEndung() {
+			return ".privrsa";
+		}
+	}
+	
+	
+	
+	public class OeffentlicherSchluessel extends Schluessel{
+
+		public OeffentlicherSchluessel(BigInteger N, BigInteger exponent) {
+			super(N, exponent);
+		}
+		
+		public OeffentlicherSchluessel(File file) {
+				//TODO Sicherstellen, dass die Datei einen privaten Schluessel enthaelt und einlesen
+			}
+
+		@Override
+		public String dateiEndung() {
+			return ".oeffrsa";
+		}
+	}
+	
+	
 	
 	public class Schluesselpaar
 	{
-		private Schluessel priv ;
-		private Schluessel oeff;
+		private PrivaterSchluessel priv ;
+		private OeffentlicherSchluessel oeff;
 		
 		public Schluesselpaar(File file){
-			//TODO Die abgespeicherten Schluessel muessen in der Endung eine Info enthalten, ob sie privat oder oeffentlich sind. Dazu muessen sie es zuerst selbst wissen (mithilfe eines Booleans?) 
+			//TODO Schluesselpaar einlesen
 		}
-		public Schluesselpaar(Schluessel privat, Schluessel oeffentlich){
+		public Schluesselpaar(PrivaterSchluessel privat, OeffentlicherSchluessel oeffentlich){
 			priv = privat;
 			oeff = oeffentlich;
 		}
