@@ -1,7 +1,7 @@
-.
 package de.freiburg_seminar.krypto;
 
 import java.math.BigInteger;
+import java.io.*;
 
 
 /*
@@ -10,6 +10,8 @@ import java.math.BigInteger;
  * (BASE64, hex?)
  * 
  * TODO: Woher kommt der Zufall? 
+ * 
+ * TODO Main() schreiben
  */
 public class RSA {
 
@@ -18,22 +20,31 @@ public class RSA {
 		/**
 		 * 
 		 */
-		public Schluessel(File) {
-		};
+		public Schluessel(File file) {
+			//TODO Schluessel laden
+		}
 		
 		/**
 		 * 
 		 */
 		public Schluessel(BigInteger N, BigInteger exponent) {
+			this.N = N;
+			this.exponent = exponent;
 		};
 
 		private BigInteger exponent;
 		private BigInteger N;
 
-		public BigInteger getExponent();
-		public BigInteger getN();	
+		public BigInteger getExponent(){
+			return exponent;
+		}
+		public BigInteger getN(){
+			return N;
+		}
 		
-		public void speichere(File);
+		public void speichere(File file){
+			//TODO Schluessel speichern
+		}
 	};
 	
 	public class Schluesselpaar
@@ -41,11 +52,25 @@ public class RSA {
 		private Schluessel priv ;
 		private Schluessel oeff;
 		
-		public Schluesselpaar(File);
-		public Schluesselpaar(Schluessel priv, Schluessel oeff);
-		public void speichere(File);
-		public Schluessel getPriv();
-		public Schluessel getOeff();
+		public Schluesselpaar(File file){
+			//TODO Die abgespeicherten Schluessel muessen in der Endung eine Info enthalten, ob sie privat oder oeffentlich sind. Dazu muessen sie es zuerst selbst wissen (mithilfe eines Booleans?) 
+		}
+		public Schluesselpaar(Schluessel privat, Schluessel oeffentlich){
+			priv = privat;
+			oeff = oeffentlich;
+		}
+		
+		public void speichere(File file){
+			//TODO Soll stattdessen ein Ordner angelegt werden, der privaten und oeffentlichen Schluessen enthaelt? Oder beide in eine Textdatei geschrieben werden? 
+			priv.speichere(file);
+			oeff.speichere(file);
+		}
+		public Schluessel getPriv(){
+			return priv;
+		}
+		public Schluessel getOeff(){
+			return oeff;
+		}
 		
 	};
 
@@ -55,13 +80,22 @@ public class RSA {
 		// TODO: Methode implementieren 
 	}
 	
-	public OeffentlicherSchluessel extrahiereOeffSchluessel();
+	public Schluessel extrahiereOeffSchluessel(){
+		//TODO Methode implementieren
+	}
 	
-	public BigInteger chif(BigInteger message, BigInteger oeff);
-	public BigInteger dech(BigInteger message, BigInteger oeff);
-	public BigInteger sign(BigInteger message, BigInteger priv);
-	public BigInteger veri(BigInteger message, BigInteger priv);
-	
+	public BigInteger chif(BigInteger message, BigInteger oeff){
+		//TODO chiffrieren
+	}
+	public BigInteger dech(BigInteger message, BigInteger oeff){
+		//TODO dechiffrieren
+	}
+	public BigInteger sign(BigInteger message, BigInteger priv){
+		//TODO signieren
+	}
+	public BigInteger veri(BigInteger message, BigInteger priv){
+		//TODO verifizieren
+	}
 	
 	
 }
