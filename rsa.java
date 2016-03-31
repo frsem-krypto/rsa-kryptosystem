@@ -118,7 +118,7 @@ public class RSA {
 		// TODO: Methode implementieren 
 	}
 	
-	public Schluessel extrahiereOeffSchluessel(){
+	public OeffentlicherSchluessel extrahiereOeffSchluessel(){
 		//TODO Methode implementieren
 	}
 	
@@ -135,5 +135,18 @@ public class RSA {
 		//TODO verifizieren
 	}
 	
+	public BigInteger moduluPotenz(BigInteger basis, BigInteger potenz, BigInteger modulu){
+		if (0 == potenz.compareTo(BigInteger.valueOf(1))){
+			return basis;
+			
+		}else if (potenz.mod(BigInteger.valueOf(2)).equals(0)) {
+			BigInteger halbePotenz = moduluPotenz(basis, potenz.divide(BigInteger.valueOf(2)), modulu);
+			return halbePotenz.multiply(halbePotenz).mod(modulu);
+			
+		}else{
+			return basis.multiply(moduluPotenz(basis, potenz.subtract(BigInteger.valueOf(1)), modulu)).mod(modulu);
+		}
+			
+	}
 	
 }
