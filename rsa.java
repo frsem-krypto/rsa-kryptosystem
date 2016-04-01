@@ -122,17 +122,17 @@ public class RSA {
 		//TODO Methode implementieren
 	}
 	
-	public BigInteger chif(BigInteger message, BigInteger oeff){
-		//TODO chiffrieren
+	public BigInteger chif(BigInteger message, OeffentlicherSchluessel oeff){
+		return moduluPotenz(message, oeff.getExponent(), oeff.getN());
 	}
-	public BigInteger dech(BigInteger message, BigInteger oeff){
-		//TODO dechiffrieren
+	public BigInteger dech(BigInteger message, PrivaterSchluessel priv){
+		return moduluPotenz(message, priv.getExponent(), priv.getN());
 	}
-	public BigInteger sign(BigInteger message, BigInteger priv){
-		//TODO signieren
+	public BigInteger sign(BigInteger message, PrivaterSchluessel priv){
+		return moduluPotenz(message, priv.getExponent(), priv.getN());
 	}
-	public BigInteger veri(BigInteger message, BigInteger priv){
-		//TODO verifizieren
+	public BigInteger veri(BigInteger message, OeffentlicherSchluessel oeff){
+		return moduluPotenz(message, oeff.getExponent(), oeff.getN());
 	}
 	
 	public BigInteger moduluPotenz(BigInteger basis, BigInteger potenz, BigInteger modulu){
