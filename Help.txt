@@ -4,7 +4,8 @@
     cd rsa-kryptosystem
 
   2.Projekt downloaden:
-    git clone https://github.com/PixelProfi/rsa-kryptosystem.git
+    git clone https://github.com/>NUTZERNAME</rsa-kryptosystem.git
+    (angemeldet)
 
   3.Die zu bearbeitende Datei "fokusieren":
     git add >entsprechende Datei<
