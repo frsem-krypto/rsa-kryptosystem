@@ -1,24 +1,21 @@
-.
-package de.freiburg_seminar.krypto;
-
 import java.math.BigInteger;
+import java.io.*;
 
 
 /*
  * TODO: Wie werden Texte vor dem Chiffrieren kodiert?
- * TODO: Wie werden Schlüssel und andere Binärdaten gespeichert
+ * TODO: Wie werden Schlaessel und andere Binaerdaten gespeichert
  * (BASE64, hex?)
  * 
  * TODO: Woher kommt der Zufall? 
  */
-public class RSA {
-
+public class rsa {
 	public class Key
 	{
 		/**
 		 * 
 		 */
-		public Key(File) {
+		public Key(File file) {
 		};
 		
 		/**
@@ -29,23 +26,39 @@ public class RSA {
 
 		private BigInteger exponent;
 		private BigInteger N;
-
-		public BigInteger getExponent();
-		public BigInteger getN();	
+		public BigInteger getExponent(){
+			return exponent;
+		}
+		public BigInteger getN(){
+			return N;
+		}
 		
-		public void save(File);
-	};
+		public void save(File file){
+			//TODO Schluessel abspeichern
+			//Hierzu kann dateiEndung() verwendet werden
+		}
+	}
 	
 	public class KeyPair
 	{
 		private Key priv ;
 		private Key pub;
 		
-		public KeyPair(File);
-		public KeyPair(Key priv, Key pub);
-		public void save(File);
-		public Key getPriv();
-		public Key getpub();
+		public KeyPair(File file) {
+		
+		}
+		public KeyPair(Key priv, Key pub) {
+		
+		}
+		public void save(File file) {
+		
+		}
+		public Key getPriv() {
+			return null;
+		}
+		public Key getpub() {
+			return null;
+		}
 		
 	};
 
@@ -53,15 +66,26 @@ public class RSA {
 	
 	public KeyPair createKey() {
 		// TODO: Methode implementieren 
+			return null;
 	}
 	
-	public pubKey extractpubKey();
+	public Key  extractpubKey() {
+		return null;
+	}
 	
-	public BigInteger chif(BigInteger message, BigInteger pub);
-	public BigInteger dech(BigInteger message, BigInteger pub);
-	public BigInteger sign(BigInteger message, BigInteger priv);
-	public BigInteger veri(BigInteger message, BigInteger priv);
+	public BigInteger chif(BigInteger message, BigInteger pub) {
+		return null;	
+	}
 	
+	public BigInteger dech(BigInteger message, BigInteger pub) {
+		return null;
+	}
+	public BigInteger sign(BigInteger message, BigInteger priv) {
+		return null;
+	}
 	
+	public BigInteger veri(BigInteger message, BigInteger priv) {
+		return null;
+	}
 	
 }
