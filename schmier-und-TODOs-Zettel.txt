@@ -1,0 +1,42 @@
+Architektur:
+************
+Verallgemeinerung auf andere asymmetrische Kryptosysteme, z.B. ElGamal etc.?
+
+Klassen und Beziehungen vorausdenken für 
+- Keyring
+- Schluesselsignaturen
+- GUI
+- TUI
+
+Je eine eigene Klassen fuer private/oeffentliche Schluessel?
+
+Abspeichern nur in Dateien?
+
+Arithmetik auslagern in eigene Klasse und von Kryptografie trennen? 
+(BigInteger kann schon fast alles!)  
+
+
+Aufräumen:
+**********
+Ueberfluessigen Code entfernen?
+TUI/GUI lokalisierbar? (Strings externalisieren)
+
+
+
+eigentliche Kryptografie:
+*************************
+Zufall ernten
+(Entropiegehalt messen???)
+daraus wirksam Zufallszahlen erzeugen
+
+Padding beim Chiffrieren?
+Padding beim Signieren?
+
+
+
+Source-Konventionen:
+*****************************
+Deutsch/Englisch in 
+- Bezeichnern?
+- Source-Kommentaren?
+- Commit-Kommentaren?
