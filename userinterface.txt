@@ -3,7 +3,7 @@
 create new name = neuen Namen eingeben, der als adresse von einem als Absender in den Nachrichten mitgeschickt wird.
 
 Adressbuch:
-add adress >Name; public key< = ergänzen einer Datei (nur auf diesem Computer), die als Adressbuch dient und einen neuen Kontskt hinzufügt.
+add adress >Name; public key< = ergänzen einer Datei (nur auf diesem Computer), die als Adressbuch dient und einen neuen Kontakt hinzufügt.
 change adress >alter Name; alter Public Key< >neuer Name; neuer Public Key< = das ändern eines einzelnen Kontakts im Adressbuch
 list adress = gesamtes Adressbuch anzeigen
 list adress me = alle Verschicker mit Namen und Piblic Key, von denen wir jemals eine Nachricht erhalten haben
