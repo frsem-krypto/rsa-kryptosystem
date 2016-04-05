@@ -1,6 +1,4 @@
-﻿package de.freiburg_seminar.krypto;
-
-import java.math.BigInteger;
+﻿import java.math.BigInteger;
 import java.io.*;
 
 
@@ -13,9 +11,9 @@ import java.io.*;
  * 
  * TODO Main() schreiben
  */
-public class RSA {
+public class rsa {
 
-	public abstract class Schluessel
+	public class Schluessel
 	{
 		/**
 		 * 
@@ -46,54 +44,20 @@ public class RSA {
 			//TODO Schluessel abspeichern
 			//Hierzu kann dateiEndung() verwendet werden
 		}
-		public abstract String dateiEndung();
 	}
 	
-	public class PrivaterSchluessel extends Schluessel{
 
-		public PrivaterSchluessel(BigInteger N, BigInteger exponent) {
-			super(N, exponent);
-		}
-		
-		public PrivaterSchluessel(File file) {
-				//TODO Sicherstellen, dass die Datei einen privaten Schluessel enthaelt und einlesen
-			}
-
-		@Override
-		public String dateiEndung() {
-			return ".privrsa";
-		}
-	}
-	
-	
-	
-	public class OeffentlicherSchluessel extends Schluessel{
-
-		public OeffentlicherSchluessel(BigInteger N, BigInteger exponent) {
-			super(N, exponent);
-		}
-		
-		public OeffentlicherSchluessel(File file) {
-				//TODO Sicherstellen, dass die Datei einen privaten Schluessel enthaelt und einlesen
-			}
-
-		@Override
-		public String dateiEndung() {
-			return ".oeffrsa";
-		}
-	}
-	
 	
 	
 	public class Schluesselpaar
 	{
-		private PrivaterSchluessel priv ;
-		private OeffentlicherSchluessel oeff;
+		private Schluessel priv ;
+		private Schluessel oeff;
 		
 		public Schluesselpaar(File file){
 			//TODO Schluesselpaar einlesen
 		}
-		public Schluesselpaar(PrivaterSchluessel privat, OeffentlicherSchluessel oeffentlich){
+		public Schluesselpaar(Schluessel privat, Schluessel oeffentlich){
 			priv = privat;
 			oeff = oeffentlich;
 		}
@@ -115,23 +79,25 @@ public class RSA {
 	public final int schluesselGroesse = 100;
 	
 	public Schluesselpaar erzeugeSchluessel() {
+		return null;
 		// TODO: Methode implementieren 
 	}
 	
-	public OeffentlicherSchluessel extrahiereOeffSchluessel(){
+	public Schluessel extrahiereOeffSchluessel(){
+		return null;
 		//TODO Methode implementieren
 	}
 	
-	public BigInteger chif(BigInteger message, OeffentlicherSchluessel oeff){
+	public BigInteger chif(BigInteger message, Schluessel oeff){
 		return moduluPotenz(message, oeff.getExponent(), oeff.getN());
 	}
-	public BigInteger dech(BigInteger message, PrivaterSchluessel priv){
+	public BigInteger dech(BigInteger message, Schluessel priv){
 		return moduluPotenz(message, priv.getExponent(), priv.getN());
 	}
-	public BigInteger sign(BigInteger message, PrivaterSchluessel priv){
+	public BigInteger sign(BigInteger message, Schluessel priv){
 		return moduluPotenz(message, priv.getExponent(), priv.getN());
 	}
-	public BigInteger veri(BigInteger message, OeffentlicherSchluessel oeff){
+	public BigInteger veri(BigInteger message, Schluessel oeff){
 		return moduluPotenz(message, oeff.getExponent(), oeff.getN());
 	}
 	
@@ -139,7 +105,7 @@ public class RSA {
 		if (0 == potenz.compareTo(BigInteger.valueOf(1))){
 			return basis;
 			
-		}else if (potenz.mod(BigInteger.valueOf(2)).equals(0)) {
+		}else if (potenz.mod(BigInteger.valueOf(2)).equals(BigInteger.ZERO)) {
 			BigInteger halbePotenz = moduluPotenz(basis, potenz.divide(BigInteger.valueOf(2)), modulu);
 			return halbePotenz.multiply(halbePotenz).mod(modulu);
 			
