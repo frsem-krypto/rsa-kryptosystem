@@ -1,0 +1,6 @@
+create new key = neues Schlüsselpaar erzeugen
+
+Der Computer muss eine Datei als dictonary erstellen, die als adressbuch dient
+add adressbook (Name; public key) = ergänzen einer Datei (nur auf diesem Computer) für alle Adressen, an die Nachrichten verschickt werden sollen
+create massage "xxxxxx..." = das schreiben einer Nachricht, die verschlüsselt werden soll 
+Eingabe ist ein Name im Dictonary
