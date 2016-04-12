@@ -1,11 +1,11 @@
-1.Aktuellste Version des Verzeichnissese Downloaden:
+1.Aktuellste Version des Verzeichnisses downloaden:
 cd rsa-kryptosystem
 git pull
 
 2. Datei öffnen und bearbeiten.
 
 3. commiten:
-git commit -m "NAME"
+git commit -m "MESSAGE"
 
 4.Bei Fehlermeldung noch einmal pullen.
 
@@ -15,6 +15,8 @@ git push
 -> Password
 
 Don't forget:
-strg + x
+strg + x (falsches Fenster schließen)
 ls = list
-git satus = aktuellen Status der Datei anzeigen
+git status = aktuellen Status der Datei anzeigen
+strg + s = speichern
+git log = Dateiverlauf anzeigen
