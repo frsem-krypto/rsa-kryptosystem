@@ -1,4 +1,5 @@
-import java.math.BigInteger;
+﻿import java.math.BigInteger;
+import java.util.Random;
 import java.io.*;
 
 
@@ -87,5 +88,33 @@ public class rsa {
 	public BigInteger veri(BigInteger message, BigInteger priv) {
 		return null;
 	}
+	
+		
+	public KeyPair generateKey(int bitLength, int certainly){
+//		BigInteger p = new BigInteger(bitLength, certainly, newRandom());
+		BigInteger p = new BigInteger("7");
+//		BigInteger q = new BigInteger(bitLength, certainly, newRandom());
+		BigInteger q = new BigInteger("11");
+		
+		BigInteger n = p.multiply(q);
+		
+		BigInteger phiVonN = (p.subtract(BigInteger.ONE)).multiply(q.subtract(BigInteger.ONE));
+		
+//		BigInteger e = new BigInteger(bitLength, newRandom());
+		BigInteger e = new BigInteger("13");
+		while (e.gcd(phiVonN).equals(BigInteger.ONE) == false){
+			e = e.add(BigInteger.ONE);
+		}
+		
+		BigInteger d = e.modInverse(n);
+		
+		return new KeyPair(new Key(d, n), new Key(e, n));
+	}
+
+	private Random newRandom() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 	
 }
