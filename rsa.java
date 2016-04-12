@@ -13,18 +13,18 @@ import java.math.BigInteger;
  */
 public class RSA {
 
-	public class Schluessel
+	public class Key
 	{
 		/**
 		 * 
 		 */
-		public Schluessel(File) {
+		public Key(File) {
 		};
 		
 		/**
 		 * 
 		 */
-		public Schluessel(BigInteger N, BigInteger exponent) {
+		public Key(BigInteger N, BigInteger exponent) {
 		};
 
 		private BigInteger exponent;
@@ -33,32 +33,32 @@ public class RSA {
 		public BigInteger getExponent();
 		public BigInteger getN();	
 		
-		public void speichere(File);
+		public void save(File);
 	};
 	
-	public class Schluesselpaar
+	public class KeyPair
 	{
-		private Schluessel priv ;
-		private Schluessel oeff;
+		private Key priv ;
+		private Key pub;
 		
-		public Schluesselpaar(File);
-		public Schluesselpaar(Schluessel priv, Schluessel oeff);
-		public void speichere(File);
-		public Schluessel getPriv();
-		public Schluessel getOeff();
+		public KeyPair(File);
+		public KeyPair(Key priv, Key pub);
+		public void save(File);
+		public Key getPriv();
+		public Key getpub();
 		
 	};
 
-	public final int schluesselGroesse = 100;
+	public final int KeySize = 100;
 	
-	public Schluesselpaar erzeugeSchluessel() {
+	public KeyPair createKey() {
 		// TODO: Methode implementieren 
 	}
 	
-	public OeffentlicherSchluessel extrahiereOeffSchluessel();
+	public pubKey extractpubKey();
 	
-	public BigInteger chif(BigInteger message, BigInteger oeff);
-	public BigInteger dech(BigInteger message, BigInteger oeff);
+	public BigInteger chif(BigInteger message, BigInteger pub);
+	public BigInteger dech(BigInteger message, BigInteger pub);
 	public BigInteger sign(BigInteger message, BigInteger priv);
 	public BigInteger veri(BigInteger message, BigInteger priv);
 	
