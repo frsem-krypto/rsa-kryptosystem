@@ -1,44 +1,20 @@
-﻿Links stehen unten ↓
-
-  1.Richtiges Verzeichnis Wählen:
-    cd rsa-kryptosystem
-
-  2.Projekt downloaden:
-    git clone https://github.com/>NUTZERNAME</rsa-kryptosystem.git
-    (angemeldet)
-
-  3.Die zu bearbeitende Datei "fokusieren":
-    git add >entsprechende Datei<
-
-  4.Datei pullen (aus dem Internet aktualisieren):
-    git pull
-
-  5.Datei öffnen und bearbeiten.
-
-  6.commiten:
-    git commit -m "Info/Veränderung"
-
-  !! Bei Fehlermeldung sicherheitshalber noch einmal pullen. !!
-
-  7.Datei pushen (In die Cloud wieder hochladen):
-    git push
-    -> Benutzername
-    -> Password
-
-
-
-Alle Commands:
-git clone https://github.com/PixelProfi/rsa-kryptosystem.git
-ls = list
-git status = aktuellen Status der Datei anzeigen
+1.Aktuellste Version des Verzeichnissese Downloaden:
+cd rsa-kryptosystem
 git pull
+
+2. Datei öffnen und bearbeiten.
+
+3. commiten:
+git commit -m "NAME"
+
+4.Bei Fehlermeldung noch einmal pullen.
+
+5.Datei pushen:
 git push
-strg + x = abbrechen
-strg + s = speichern
+-> Benutzername
+-> Password
 
-PS: Bei dem Download von Git auf Windows bekommt man auch eine eigene Git-Konsole (bei der Installation noch am besten Desktop-Icon anwählen),
-die einige Vorteile, unter anderem, der Übersichtlichkeit bietet. Ihr müsst euch z.B. nur einmal mit GitHub anmelden.
-Hier der Link zur installationsdatei für Windows: https://git-scm.com/download/win
-
-**** Gerne Vervollständigen, falls etwas fehlt :) ****
-.
+Don't forget:
+strg + x
+ls = list
+git satus = aktuellen Status der Datei anzeigen

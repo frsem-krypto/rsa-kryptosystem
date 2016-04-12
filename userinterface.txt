@@ -1,0 +1,31 @@
+﻿create new key = neues Schlüsselpaar erzeugen
+!!ACHTUNG: Der Public Key, der in jeder Massage hinzugefügt wird (wie unten beschrieben) muss demnach natürlich auch geändert werden!!
+create new name = neuen Namen eingeben, der als adresse von einem als Absender in den Nachrichten mitgeschickt wird.
+
+Adressbuch:
+add adress >Name; public key< = ergänzen einer Datei (nur auf diesem Computer), die als Adressbuch dient und einen neuen Kontakt hinzufügt.
+change adress >alter Name; alter Public Key< >neuer Name; neuer Public Key< = das ändern eines einzelnen Kontakts im Adressbuch
+list adress = gesamtes Adressbuch anzeigen
+list adress me = alle Verschicker mit Namen und Public Key, von denen wir jemals eine Nachricht erhalten haben
+
+Eine Message Erstellen und verschicken:
+create message "xxxxxx..." = das schreiben einer Nachricht, die verschlüsselt werden soll 
+nach dem Schreiben der Massage (Ende mit " ) :
+-> Empfänger: >einzugeben<
+den Public Key zu dieser Person im Adressbuch suchen und damit chiffrieren
+anschließend die Nachricht verschicken
+
+
+
+
+
+
+TOTO an die Java Programmierer:
+Der Computer muss ein Dictionary erstellen, welches als Adressbuch für den Nutzer dient. Also eine .txt-Datei, aus der bei dem Namen, 
+den sie als Message-Empfänger angibt, der Wert des Public Keys des Empfängers zum zugrhöriugen Empfänger heraus zu lesen ist.
+
+TOTO an die Java Programmierer:
+Der Computer soll eine .txt-Datei besitzen, in der genau, wie bei dem Adressbuch wie in einem Dictonary Nutzerdaten (Name und Public Key) gespeichert sind,
+allerdings von allen Absendern, von denen wir jemals eine Nachricht erhalten haben. Bei dem verschicken einer Nachricht müssen demnach natürlich auch (an einer Festgelegten Stelle, ich empfehle einfach die erste Zeile)
+Name und Public Key des Senders dazu geschrieben werden (automatisch), damit das Programm, des gegenübers die Daten automatisch in das Adressbuch eintragen kann. So kann man einfach immer die erste Zeile einer Nachricht
+ins eigene Adressbuch eingetragen werden. Das hat den großen Vorteil, dass der Empfänger dem Absender antworten kann, ohne online seinen Public Key suchen zu müssen.
