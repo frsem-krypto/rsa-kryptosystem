@@ -65,10 +65,7 @@ public class rsa {
 
 	public final int KeySize = 100;
 	
-	public KeyPair createKey() {
-		// TODO: Methode implementieren 
-			return null;
-	}
+
 	
 	public Key  extractpubKey() {
 		return null;
@@ -90,7 +87,7 @@ public class rsa {
 	}
 	
 		
-	public KeyPair generateKey(int bitLength, int certainly){
+	public KeyPair createKeyPair(int bitLength, int certainly){
 //		BigInteger p = new BigInteger(bitLength, certainly, newRandom());
 		BigInteger p = new BigInteger("7");
 //		BigInteger q = new BigInteger(bitLength, certainly, newRandom());
@@ -101,7 +98,7 @@ public class rsa {
 		BigInteger phiVonN = (p.subtract(BigInteger.ONE)).multiply(q.subtract(BigInteger.ONE));
 		
 //		BigInteger e = new BigInteger(bitLength, newRandom());
-		BigInteger e = new BigInteger("13");
+		BigInteger e = new BigInteger("12");
 		while (e.gcd(phiVonN).equals(BigInteger.ONE) == false){
 			e = e.add(BigInteger.ONE);
 		}
