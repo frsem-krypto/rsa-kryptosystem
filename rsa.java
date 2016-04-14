@@ -35,7 +35,7 @@ public class rsa {
 		}
 		
 		public void save(File file){
-			//TODO Schluessel abspeichern
+			//TODO Key abspeichern
 			//Hierzu kann dateiEndung() verwendet werden
 		}
 	}
@@ -71,19 +71,18 @@ public class rsa {
 		return null;
 	}
 	
-	public BigInteger chif(BigInteger message, BigInteger pub) {
-		return null;	
-	}
 	
-	public BigInteger dech(BigInteger message, BigInteger pub) {
-		return null;
+	public BigInteger chif(BigInteger message, Key oeff){
+		return message.modPow(oeff.getExponent(), oeff.getN());
 	}
-	public BigInteger sign(BigInteger message, BigInteger priv) {
-		return null;
+	public BigInteger dech(BigInteger message, Key priv){
+		return message.modPow(priv.getExponent(), priv.getN());
 	}
-	
-	public BigInteger veri(BigInteger message, BigInteger priv) {
-		return null;
+	public BigInteger sign(BigInteger message, Key priv){
+		return message.modPow(priv.getExponent(), priv.getN());
+	}
+	public BigInteger veri(BigInteger message, Key oeff){
+		return message.modPow(oeff.getExponent(), oeff.getN());
 	}
 	
 		
