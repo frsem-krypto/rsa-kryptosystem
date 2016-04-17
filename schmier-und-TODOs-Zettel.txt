@@ -12,6 +12,8 @@ Je eine eigene Klassen fuer private/oeffentliche Schluessel?
 
 Abspeichern nur in Dateien?
 
+chif, dech, veri, sign statisch machen?
+
 Arithmetik auslagern in eigene Klasse und von Kryptografie trennen? 
 (BigInteger kann schon fast alles!)  
 
