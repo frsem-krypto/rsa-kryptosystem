@@ -17,6 +17,7 @@ chif, dech, veri, sign statisch machen?
 Arithmetik auslagern in eigene Klasse und von Kryptografie trennen? 
 (BigInteger kann schon fast alles!)  
 
+An die Programmierer des TUIs: Könntet ihr vielleicht zuerst ein einfaches TUI programmieren, mit dem man die Methoden aufrufen kann?
 
 Aufräumen:
 **********
