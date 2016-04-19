@@ -11,8 +11,7 @@ import java.io.*;
  * TODO: Woher kommt der Zufall? 
  */
 public class rsa {
-	public class Key
-	{
+	public static class Key {
 		/**
 		 * 
 		 */
@@ -22,11 +21,17 @@ public class rsa {
 		/**
 		 * 
 		 */
-		public Key(BigInteger N, BigInteger exponent) {
-		};
-
+		
 		private BigInteger exponent;
 		private BigInteger N;
+		
+		public Key(BigInteger N, BigInteger exponent) {
+			this.N = N;
+			this.exponent = exponent;
+		};
+
+
+		
 		public BigInteger getExponent(){
 			return exponent;
 		}
@@ -40,7 +45,7 @@ public class rsa {
 		}
 	}
 	
-	public class KeyPair
+	public static class KeyPair
 	{
 		private Key priv ;
 		private Key pub;
@@ -87,28 +92,25 @@ public class rsa {
 	}
 	
 		
-	public KeyPair createKeyPair(int bitLength, int certainly){
-//		BigInteger p = new BigInteger(bitLength, certainly, newRandom());
-		BigInteger p = new BigInteger("7");
-//		BigInteger q = new BigInteger(bitLength, certainly, newRandom());
-		BigInteger q = new BigInteger("11");
+	public static KeyPair createKeyPair(int bitLength, int certainly){
+		BigInteger p = new BigInteger(bitLength, certainly, newRandom());
+		BigInteger q = new BigInteger(bitLength, certainly, newRandom());
 		
 		BigInteger n = p.multiply(q);
 		
 		BigInteger phiVonN = (p.subtract(BigInteger.ONE)).multiply(q.subtract(BigInteger.ONE));
 		
-//		BigInteger e = new BigInteger(bitLength, newRandom());
-		BigInteger e = new BigInteger("12");
+		BigInteger e = new BigInteger(bitLength, newRandom());
 		while (e.gcd(phiVonN).equals(BigInteger.ONE) == false){
 			e = e.add(BigInteger.ONE);
 		}
 		
-		BigInteger d = e.modInverse(n);
+		BigInteger d = e.modInverse(phiVonN);
 		
 		return new KeyPair(new Key(d, n), new Key(e, n));
 	}
 
-	private Random newRandom() {
+	private static Random newRandom() {
 		// TODO Auto-generated method stub
 		return null;
 	}
