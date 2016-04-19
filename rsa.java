@@ -3,8 +3,6 @@ import java.math.BigInteger;
 import java.util.*;
 import java.io.*;
 
-import sun.misc.BASE64Decoder;
-
 
 /*
  * TODO: Wie werden Texte vor dem Chiffrieren kodiert?
