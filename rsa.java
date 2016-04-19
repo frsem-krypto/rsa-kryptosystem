@@ -1,5 +1,11 @@
+<<<<<<< Updated upstream
 ﻿import java.math.BigInteger;
 import java.util.Random;
+=======
+import java.math.BigInteger;
+import java.nio.ByteBuffer;
+import java.util.Base64;
+>>>>>>> Stashed changes
 import java.io.*;
 
 
@@ -34,9 +40,18 @@ public class rsa {
 			return N;
 		}
 		
-		public void save(File file){
-			//TODO Key abspeichern
-			//Hierzu kann dateiEndung() verwendet werden
+		public void save(File file){  //experimentell: funktioniert evtl. noch nicht wie vorhergesehen
+			try {
+				FileOutputStream stream = new FileOutputStream(file);
+			
+				String base64exp = Base64.getEncoder().encodeToString(this.exponent.toByteArray());
+				String base64N = Base64.getEncoder().encodeToString(N.toByteArray());
+				stream.write(base64exp.getBytes());
+				stream.write("\n".getBytes());
+				stream.write(base64N.getBytes());
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 		}
 	}
 	
