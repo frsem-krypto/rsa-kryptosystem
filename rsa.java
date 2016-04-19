@@ -1,7 +1,9 @@
 import java.util.Random;
 import java.math.BigInteger;
-import java.util.Base64;
+import java.util.*;
 import java.io.*;
+
+import sun.misc.BASE64Decoder;
 
 
 /*
@@ -28,6 +30,20 @@ public class rsa {
 		 * 
 		 */
 		public Key(File file) {
+			try{
+				InputStreamReader isr = new InputStreamReader(new FileInputStream(file));
+				BufferedReader br = new BufferedReader(isr);
+				
+				String stringN = br.readLine();
+				String stringExp = br.readLine();
+				
+				this.N = new BigInteger(Base64.getDecoder().decode(stringN));
+				this.exponent = new BigInteger(Base64.getDecoder().decode(stringExp));
+				
+			} catch(Exception e) {
+				e.printStackTrace();
+			}
+			
 		};
 		
 		/**
@@ -71,7 +87,7 @@ public class rsa {
 		private Key pub;
 		
 		public KeyPair(File file) {
-		
+			
 		}
 		public KeyPair(Key priv, Key pub) {
 			this.priv = priv;
