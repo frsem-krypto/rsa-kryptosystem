@@ -19,9 +19,16 @@ public class rsa {
 		BigInteger N = new BigInteger("854923100435648464084648615");
 		BigInteger exp = new BigInteger("50540841085464189548454665");
 		
-		Key key = new Key(N, exp);
+		Key key1 = new Key(N, exp);
 		File file = new File("key.puk");  //puk stands for "PUblic Key", prk could be used for "PRivate Key"
-		key.save(file);
+		key1.save(file);
+		System.out.println("Saved key in 'key.puk'.");
+		
+		Key key2 = new Key(file);
+		System.out.println("Created new key from saved file:");
+		System.out.printf("\tN:\t%s\n", key2.N);
+		System.out.printf("\texp:\t%s\n", key2.exponent);
+		
 	}
 	
 	public static class Key
@@ -72,9 +79,9 @@ public class rsa {
 			
 				String base64exp = Base64.getEncoder().encodeToString(this.exponent.toByteArray());
 				String base64N = Base64.getEncoder().encodeToString(N.toByteArray());
-				stream.write(base64exp.getBytes());
-				stream.write("\n".getBytes());
 				stream.write(base64N.getBytes());
+				stream.write("\n".getBytes());
+				stream.write(base64exp.getBytes());
 			} catch (Exception e) {
 				e.printStackTrace();
 			}	
