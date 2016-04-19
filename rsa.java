@@ -35,6 +35,9 @@ public class rsa {
 			return N;
 		}
 		
+		/*TODO: erstellen eines File-Objekts und Aufrufen der save-Methode nach dem Genererieren der Schlüssel
+		 *        bzw. auf Wunsch
+		 */
 		public void save(File file){  //experimentell: funktioniert evtl. noch nicht wie vorhergesehen
 			try {
 				FileOutputStream stream = new FileOutputStream(file);
