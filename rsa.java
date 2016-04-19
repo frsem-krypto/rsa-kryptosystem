@@ -12,7 +12,17 @@ import java.io.*;
  * TODO: Woher kommt der Zufall? 
  */
 public class rsa {
-	public class Key
+	
+	public static void main(String[] args){
+		BigInteger N = new BigInteger("854923100435648464084648615");
+		BigInteger exp = new BigInteger("50540841085464189548454665");
+		
+		Key key = new Key(N, exp);
+		File file = new File("key.puk");  //puk stands for "PUblic Key", prk could be used for "PRivate Key"
+		key.save(file);
+	}
+	
+	public static class Key
 	{
 		/**
 		 * 
@@ -24,6 +34,8 @@ public class rsa {
 		 * 
 		 */
 		public Key(BigInteger N, BigInteger exponent) {
+			this.N = N;
+		    this.exponent = exponent;
 		};
 
 		private BigInteger exponent;
@@ -53,7 +65,7 @@ public class rsa {
 		}
 	}
 	
-	public class KeyPair
+	public static class KeyPair
 	{
 		private Key priv ;
 		private Key pub;
@@ -77,15 +89,15 @@ public class rsa {
 		
 	};
 
-	public final int KeySize = 100;
+	//public final int KeySize = 100;
 	
 
 	
-	public Key  extractpubKey() {
+	public Key extractpubKey() {
 		return null;
 	}
-	
-	
+
+
 	public BigInteger chif(BigInteger message, Key oeff){
 		return message.modPow(oeff.getExponent(), oeff.getN());
 	}
