@@ -49,16 +49,17 @@ public class rsa {
 		
 		}
 		public KeyPair(Key priv, Key pub) {
-		
+			this.priv = priv;
+			this.pub = pub;
 		}
 		public void save(File file) {
 		
 		}
 		public Key getPriv() {
-			return null;
+			return priv;
 		}
-		public Key getpub() {
-			return null;
+		public Key getPub() {
+			return pub;
 		}
 		
 	};
