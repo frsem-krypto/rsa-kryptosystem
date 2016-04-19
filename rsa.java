@@ -1,11 +1,6 @@
-<<<<<<< Updated upstream
-﻿import java.math.BigInteger;
 import java.util.Random;
-=======
 import java.math.BigInteger;
-import java.nio.ByteBuffer;
 import java.util.Base64;
->>>>>>> Stashed changes
 import java.io.*;
 
 
@@ -51,7 +46,7 @@ public class rsa {
 				stream.write(base64N.getBytes());
 			} catch (Exception e) {
 				e.printStackTrace();
-			}
+			}	
 		}
 	}
 	
