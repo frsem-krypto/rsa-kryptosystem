@@ -1,24 +1,17 @@
 ﻿
-rsa encrypt dateiname [name]
-Eine geschriebene .txt-Datei soll mit dem Oeffentlichen Schluessel, des Empfaengers verschluesselt werden.
-Dazu dient das angeben, der Schluesseldatei.
-
-rsa decrypt dateiname [eigenerschluessel]
-Eine empfangene Detei (noch verschluesselt) soll entschluesselt wiedergegeben werden (im Terminal)
-Dazu muss der eigene private Schluessel genutzt werden.
-
-rsa createnewkey = neues Schluesselpaar erzeugen
+rsa createnewkey [name] = neues Schluesselpaar erzeugen
     -> 2 neue .txt Dateien im Verzeichnis erstellen
 eine, mit dem eigenen privaten Schluessel und eine mit dem eigenen Oeffentlichen Schluessel
+Name dieser Dateien: 
+privatekey[name].txt
+publickey[name].txt
 
-rsa push public Key [name]
-den eigenen Oeffentlichen Schluessel 
-Diese Daten werden an einen Server geschickt, der als "Carmen" dient. Sowie der Public key, als auch der eigens ausgewaehlte name ist nicht mehr zu aendern.
 
-!! Alles, was gepusht wird, wird an den Server gesendet !!
+rsa encrypt [dateiname] [Dateiname des Oeffentlichen Schluessels, des Empfaengers]
+Eine geschriebene .txt-Datei soll mit dem Oeffentlichen Schluessel, des Empfaengers verschluesselt werden.
 
-rsa list users
-Die auflistung aller nutzer mit namen, die auf dem Server gespeichert sind.
 
-rsa list public key [username]
-Der Oeffentliche Schluessel von einem bestimmten user wird vom Server abgerufen und als chiffrierung benutzt.
+rsa decrypt [dateiname] [entsprechender eigener privater schluessel]
+Eine empfangene Detei (noch verschluesselt) soll entschluesselt wiedergegeben werden (im Terminal)
+Dazu muss der richtige eigene private Schluessel genutzt werden.
+
