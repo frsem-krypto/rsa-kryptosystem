@@ -15,3 +15,6 @@ rsa decrypt [dateiname] [entsprechender eigener privater schluessel]
 Eine empfangene Detei (noch verschluesselt) soll entschluesselt wiedergegeben werden (im Terminal)
 Dazu muss der richtige eigene private Schluessel genutzt werden.
 
+
+
+!!!   Thomas und ich kuemmern uns nun um die anfaengliche Programmierung des ganzen, in Zusammenarbeit mit den Schluesselprogrammierern    !!!
