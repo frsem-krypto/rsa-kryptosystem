@@ -106,16 +106,16 @@ public class rsa {
 	}
 	
 	
-	public BigInteger chif(BigInteger message, Key oeff){
+	public static BigInteger chif(BigInteger message, Key oeff){
 		return message.modPow(oeff.getExponent(), oeff.getN());
 	}
-	public BigInteger dech(BigInteger message, Key priv){
+	public static BigInteger dech(BigInteger message, Key priv){
 		return message.modPow(priv.getExponent(), priv.getN());
 	}
-	public BigInteger sign(BigInteger message, Key priv){
+	public static BigInteger sign(BigInteger message, Key priv){
 		return message.modPow(priv.getExponent(), priv.getN());
 	}
-	public BigInteger veri(BigInteger message, Key oeff){
+	public static BigInteger veri(BigInteger message, Key oeff){
 		return message.modPow(oeff.getExponent(), oeff.getN());
 	}
 	
