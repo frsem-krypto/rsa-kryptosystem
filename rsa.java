@@ -140,9 +140,43 @@ public class rsa {
 	}
 
 	private static Random newRandom() {
-		// TODO Auto-generated method stub
+		
+		
+		System.out.println("Wollen Sie eine manuelle Zufallserzeugung durchfuehren?");
+		Scanner scanner = new Scanner;
+		
+		char answer = scanner.nextLine().toLowerCase().toCharArray()[0];
+		
+		if(answer == 'y' || answer == 'j' || answer == '1' || answer == 't'){
+			
+		}else{
+			
+		}
+		
 		return new Random();
 	}
 
-	
+	public static class RandomThread extends Thread{
+		
+		public double Random;
+		public long neededTime;
+		
+		@Override
+		public void run() {
+			
+			long nanoBegin = System.nanoTime();
+			
+			for(int i = 0; i < 100; i++){
+				Math.random();
+			}
+			
+			neededTime = System.nanoTime() - nanoBegin / 10;
+			
+			while(true){
+				Random = Math.random();
+			}
+			
+		}
+		
+	}
 }
