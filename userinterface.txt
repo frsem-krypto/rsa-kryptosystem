@@ -17,4 +17,4 @@ Dazu muss der richtige eigene private Schluessel genutzt werden.
 
 
 
-!!!   Thomas und ich kuemmern uns nun um die anfaengliche Programmierung des ganzen, in Zusammenarbeit mit den Schluesselprogrammierern    !!!
+!!!   Thomas, Leon und Luca kuemmern uns nun um die anfaengliche Programmierung des ganzen, in Zusammenarbeit mit den Schluesselprogrammierern    !!!
