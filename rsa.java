@@ -4,6 +4,7 @@ import java.util.*;
 import java.io.*;
 
 
+
 /*
  * TODO: Wie werden Texte vor dem Chiffrieren kodiert?
  * TODO: Wie werden Schlaessel und andere Binaerdaten gespeichert
@@ -40,7 +41,7 @@ public class rsa {
 		private BigInteger exponent;
 		private BigInteger N;
 		
-		public Key(BigInteger N, BigInteger exponent) {
+		public Key(BigInteger exponent, BigInteger N) {
 			this.N = N;
 			this.exponent = exponent;
 		};
@@ -134,12 +135,13 @@ public class rsa {
 		
 		BigInteger d = e.modInverse(phiVonN);
 		
+		
 		return new KeyPair(new Key(d, n), new Key(e, n));
 	}
 
 	private static Random newRandom() {
 		// TODO Auto-generated method stub
-		return null;
+		return new Random();
 	}
 
 	
