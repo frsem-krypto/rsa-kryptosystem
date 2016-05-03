@@ -149,8 +149,15 @@ public class rsa {
 		
 		if(answer == 'y' || answer == 'j' || answer == '1' || answer == 't'){
 			
-		}else{
-			
+		} else {
+			for(int i = 0; i < 100; i++){
+				new RandomThread().start();
+				try {
+					Thread.sleep(1);
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				}
+			}
 		}
 		
 		return new Random();
@@ -164,17 +171,14 @@ public class rsa {
 		@Override
 		public void run() {
 			
-			long nanoBegin = System.nanoTime();
+			long millisBegin = System.currentTimeMillis();
+			double random;
 			
-			for(int i = 0; i < 100; i++){
-				Math.random();
-			}
+			do {
+				random = Math.random();
+			} while(System.currentTimeMillis() < millisBegin + 50);
+						
 			
-			neededTime = System.nanoTime() - nanoBegin / 10;
-			
-			while(true){
-				Random = Math.random();
-			}
 			
 		}
 		
