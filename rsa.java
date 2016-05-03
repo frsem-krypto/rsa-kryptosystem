@@ -144,8 +144,8 @@ public class rsa {
 		
 		System.out.println("Wollen Sie eine manuelle Zufallserzeugung durchfuehren?");
 		Scanner scanner = new Scanner(System.in);
-		
 		char answer = scanner.nextLine().toLowerCase().toCharArray()[0];
+		scanner.close();
 		
 		if(answer == 'y' || answer == 'j' || answer == '1' || answer == 't'){
 			
@@ -165,8 +165,7 @@ public class rsa {
 
 	public static class RandomThread extends Thread{
 		
-		public double Random;
-		public long neededTime;
+		public double random;
 		
 		@Override
 		public void run() {
@@ -177,9 +176,15 @@ public class rsa {
 			do {
 				random = Math.random();
 			} while(System.currentTimeMillis() < millisBegin + 50);
-						
 			
+			millisBegin = System.currentTimeMillis();
+			int time = (int) Math.floor(random * 100);
 			
+			do {
+				random = Math.random();
+			} while(System.currentTimeMillis() < millisBegin + time);
+			
+			this.random = random;
 		}
 		
 	}
