@@ -160,9 +160,14 @@ public class rsa {
 					e.printStackTrace();
 				}
 			}
-			long seat = Long.MIN_VALUE;
-			//TODO die 64 Bits der RandomThreads zu einem Long zusammenfuegen
-			//return new Random(seat);
+			long seed = Long.MIN_VALUE;
+			long factor = 1;
+			for(RandomThread thread : threads){
+				if(thread.bit)
+					seed += factor;
+				factor *= 2;
+			}
+			return new Random(seed);
 		}
 		
 		return new Random();
