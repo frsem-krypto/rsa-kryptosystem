@@ -150,14 +150,19 @@ public class rsa {
 		if(answer == 'y' || answer == 'j' || answer == '1' || answer == 't'){
 			
 		} else {
-			for(int i = 0; i < 100; i++){
-				new RandomThread().start();
+			RandomThread[] threads = new RandomThread[64];
+			for(int i = 0; i < 64; i++){
+				threads[i] = new RandomThread();
+				threads[i].start();
 				try {
 					Thread.sleep(1);
 				} catch (InterruptedException e) {
 					e.printStackTrace();
 				}
 			}
+			long seat = Long.MIN_VALUE;
+			//TODO die 64 Bits der RandomThreads zu einem Long zusammenfuegen
+			//return new Random(seat);
 		}
 		
 		return new Random();
@@ -165,7 +170,7 @@ public class rsa {
 
 	public static class RandomThread extends Thread{
 		
-		public double random;
+		boolean bit;
 		
 		@Override
 		public void run() {
@@ -184,7 +189,7 @@ public class rsa {
 				random = Math.random();
 			} while(System.currentTimeMillis() < millisBegin + time);
 			
-			this.random = random;
+			this.bit = random < 0.5;
 		}
 		
 	}
