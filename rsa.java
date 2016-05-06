@@ -121,14 +121,21 @@ public class rsa {
 	
 		
 	public static KeyPair createKeyPair(int bitLength, int certainly){
-		BigInteger p = new BigInteger(bitLength, certainly, newRandom());
-		BigInteger q = new BigInteger(bitLength, certainly, newRandom());
+		System.out.println("Wollen Sie eine manuelle Zufallserzeugung durchfuehren?");
+		Scanner scanner = new Scanner(System.in);
+		char answer = scanner.nextLine().toLowerCase().toCharArray()[0];
+		scanner.close();
+		
+		boolean manualRandom = (answer == 'y' || answer == 'j' || answer == '1' || answer == 't');
+			
+		BigInteger p = new BigInteger(bitLength, certainly, newRandom(manualRandom));
+		BigInteger q = new BigInteger(bitLength, certainly, newRandom(manualRandom));
 		
 		BigInteger n = p.multiply(q);
 		
 		BigInteger phiVonN = (p.subtract(BigInteger.ONE)).multiply(q.subtract(BigInteger.ONE));
 		
-		BigInteger e = new BigInteger(bitLength, newRandom());
+		BigInteger e = new BigInteger(bitLength, newRandom(manualRandom));
 		while (e.gcd(phiVonN).equals(BigInteger.ONE) == false){
 			e = e.add(BigInteger.ONE);
 		}
@@ -139,15 +146,9 @@ public class rsa {
 		return new KeyPair(new Key(d, n), new Key(e, n));
 	}
 
-	private static Random newRandom() {
+	private static Random newRandom(boolean manualRandom) {
 		
-		
-		System.out.println("Wollen Sie eine manuelle Zufallserzeugung durchfuehren?");
-		Scanner scanner = new Scanner(System.in);
-		char answer = scanner.nextLine().toLowerCase().toCharArray()[0];
-		scanner.close();
-		
-		if(answer == 'y' || answer == 'j' || answer == '1' || answer == 't'){
+		if(manualRandom){
 			
 		} else {
 			RandomThread[] threads = new RandomThread[64];
