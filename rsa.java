@@ -124,7 +124,6 @@ public class rsa {
 		System.out.println("Wollen Sie eine manuelle Zufallserzeugung durchfuehren?");
 		Scanner scanner = new Scanner(System.in);
 		char answer = scanner.nextLine().toLowerCase().toCharArray()[0];
-		scanner.close();
 		
 		boolean manualRandom = (answer == 'y' || answer == 'j' || answer == '1' || answer == 't');
 			
