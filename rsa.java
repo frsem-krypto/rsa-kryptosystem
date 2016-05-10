@@ -163,6 +163,13 @@ public class rsa {
 			long seed = Long.MIN_VALUE;
 			long factor = 1;
 			for(RandomThread thread : threads){
+				while(!thread.finish){
+					try {
+						Thread.sleep(10);
+					} catch (InterruptedException e) {
+						e.printStackTrace();
+					}
+				}
 				if(thread.bit)
 					seed += factor;
 				factor *= 2;
@@ -176,6 +183,7 @@ public class rsa {
 	public static class RandomThread extends Thread{
 		
 		boolean bit;
+		boolean finish;
 		
 		@Override
 		public void run() {
@@ -195,6 +203,8 @@ public class rsa {
 			} while(System.currentTimeMillis() < millisBegin + time);
 			
 			this.bit = random < 0.5;
+			
+			finish = true;
 		}
 		
 	}
