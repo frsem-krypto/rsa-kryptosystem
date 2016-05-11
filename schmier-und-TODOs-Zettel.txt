@@ -36,6 +36,7 @@ daraus wirksam Zufallszahlen erzeugen
 Padding beim Chiffrieren?
 Padding beim Signieren?
 
+SecureRandom statt Random benutzen!!!
 
 
 Source-Konventionen:
