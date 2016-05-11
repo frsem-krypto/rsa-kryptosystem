@@ -36,7 +36,7 @@ daraus wirksam Zufallszahlen erzeugen
 Padding beim Chiffrieren?
 Padding beim Signieren?
 
-SecureRandom statt Random benutzen!!!
+SecureRandom statt Random benutzen!!! (https://security.stackexchange.com/questions/47871/how-securely-random-is-oracles-java-security-securerandom)
 
 
 Source-Konventionen:
