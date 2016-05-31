@@ -1,3 +1,4 @@
+import java.security.SecureRandom;
 import java.util.Random;
 import java.math.BigInteger;
 import java.util.*;
@@ -145,13 +146,16 @@ public class rsa {
 		return new KeyPair(new Key(d, n), new Key(e, n));
 	}
 
-	private static Random newRandom(boolean manualRandom) {
+	private static SecureRandom newRandom(boolean manualRandom) {
 		
 		if(manualRandom){
 			
 		} else {
-			RandomThread[] threads = new RandomThread[64];
-			for(int i = 0; i < 64; i++){
+			
+			byte[] seed = new byte[20];
+
+			RandomThread[] threads = new RandomThread[seed.length*8];
+			for(int i = 0; i < threads.length; i++){
 				threads[i] = new RandomThread();
 				threads[i].start();
 				try {
@@ -160,24 +164,31 @@ public class rsa {
 					e.printStackTrace();
 				}
 			}
-			long seed = Long.MIN_VALUE;
-			long factor = 1;
-			for(RandomThread thread : threads){
-				while(!thread.finish){
-					try {
-						Thread.sleep(10);
-					} catch (InterruptedException e) {
-						e.printStackTrace();
+			
+			int t = 0;
+			for (int i = 0; i < seed.length; i++) {
+				byte seedpart = Byte.MIN_VALUE;
+				long factor = 1;
+				for (int j = 0; j < 8; j++) {
+					RandomThread thread = threads[t];
+					while (!thread.finish) {
+						try {
+							Thread.sleep(10);
+						} catch (InterruptedException e) {
+							e.printStackTrace();
+						}
 					}
+					if (thread.bit)
+						seedpart += factor;
+					factor *= 2;
+					t++;
 				}
-				if(thread.bit)
-					seed += factor;
-				factor *= 2;
+				seed[i] = seedpart;
 			}
-			return new Random(seed);
+			return new SecureRandom(seed);
 		}
 		
-		return new Random();
+		return new SecureRandom();
 	}
 
 	public static class RandomThread extends Thread{
