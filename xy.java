@@ -106,21 +106,32 @@ public class xy {
     		byte[] bytes = strings.toString().getBytes();
     		
     		int b = 0;
+    		StringBuilder sb = new StringBuilder();
     		while(true){
     			byte[] currentBytes = new byte[bytesNumber];
+
     			for(int i = 0; i < bytesNumber; i++){
     				if(b < bytes.length){
-	    				currentBytes[i] = bytes[b];
-	    				b++;
+    					currentBytes[i] = bytes[b];
+    					b++;
     				}else{
     					break;
     				}
+
     			}
-    			//TODO wirklich rsa.chif() aufrufen
+				BigInteger m = new BigInteger(currentBytes);
+				BigInteger en = rsa.chif(m, keypub);
+				sb.append(new String(en.toByteArray()));
+				if(b >= bytes.length){
+					break;
+				}
     		}
+    		String userHome = System.getProperty("user.home");
+    		File chifm = new File("user.Home");
     		
 //    		break;
     	case "verify":
+    		
     		
     		break;
     	case "sign":
