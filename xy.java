@@ -14,6 +14,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
+
 public class xy {
 
 //    private boolean checkFile(File file) {
@@ -139,6 +140,13 @@ public class xy {
     		break;
     	case "createnewkey":
     		
+    		rsa.KeyPair key = rsa.createKeyPair(false, Integer.parseInt(args[1]), 100);
+    		key.save(new File(args[2]));
+    		
+    		
+    		break;
+    	default:
+    		System.err.println(args[0] + " is not a valid command");
     	}
     	
     }
