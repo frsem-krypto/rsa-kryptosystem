@@ -1,5 +1,4 @@
 import java.security.SecureRandom;
-import java.util.Random;
 import java.math.BigInteger;
 import java.util.*;
 import java.io.*;
@@ -121,12 +120,12 @@ public class rsa {
 	}
 	
 		
-	public static KeyPair createKeyPair(int bitLength, int certainly){
-		System.out.println("Wollen Sie eine manuelle Zufallserzeugung durchfuehren?");
-		Scanner scanner = new Scanner(System.in);
-		char answer = scanner.nextLine().toLowerCase().toCharArray()[0];
-		
-		boolean manualRandom = (answer == 'y' || answer == 'j' || answer == '1' || answer == 't');
+	public static KeyPair createKeyPair(boolean manualRandom, int bitLength, int certainly){
+//		System.out.println("Wollen Sie eine manuelle Zufallserzeugung durchfuehren?");
+//		Scanner scanner = new Scanner(System.in);
+//		char answer = scanner.nextLine().toLowerCase().toCharArray()[0];
+//		
+//		boolean manualRandom = (answer == 'y' || answer == 'j' || answer == '1' || answer == 't');
 			
 		BigInteger p = new BigInteger(bitLength, certainly, newRandom(manualRandom));
 		BigInteger q = new BigInteger(bitLength, certainly, newRandom(manualRandom));
