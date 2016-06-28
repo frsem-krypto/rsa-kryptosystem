@@ -152,45 +152,45 @@ public class rsa {
 
 	private static SecureRandom newRandom(boolean manualRandom) {
 
-		if(manualRandom){
-			
-		} else {
-			
-			byte[] seed = SecureRandom.getSeed(20);
-
-			RandomThread[] threads = new RandomThread[seed.length*8];
-			for(int i = 0; i < threads.length; i++){
-				threads[i] = new RandomThread();
-				threads[i].start();
-				try {
-					Thread.sleep(1);
-				} catch (InterruptedException e) {
-					e.printStackTrace();
-				}
-			}
-			
-			int t = 0;
-			for (int i = 0; i < seed.length; i++) {
-				byte seedpart = Byte.MIN_VALUE;
-				long factor = 1;
-				for (int j = 0; j < 8; j++) {
-					RandomThread thread = threads[t];
-					while (!thread.finish) {
-						try {
-							Thread.sleep(10);
-						} catch (InterruptedException e) {
-							e.printStackTrace();
-						}
-					}
-					if (thread.bit)
-						seedpart += factor;
-					factor *= 2;
-					t++;
-				}
-				seed[i] = seedpart;
-			}
-			return new SecureRandom(seed);
-		}
+//		if(manualRandom){
+//			
+//		} else {
+//			
+//			byte[] seed = SecureRandom.getSeed(20);
+//
+//			RandomThread[] threads = new RandomThread[seed.length*8];
+//			for(int i = 0; i < threads.length; i++){
+//				threads[i] = new RandomThread();
+//				threads[i].start();
+//				try {
+//					Thread.sleep(1);
+//				} catch (InterruptedException e) {
+//					e.printStackTrace();
+//				}
+//			}
+//			
+//			int t = 0;
+//			for (int i = 0; i < seed.length; i++) {
+//				byte seedpart = Byte.MIN_VALUE;
+//				long factor = 1;
+//				for (int j = 0; j < 8; j++) {
+//					RandomThread thread = threads[t];
+//					while (!thread.finish) {
+//						try {
+//							Thread.sleep(10);
+//						} catch (InterruptedException e) {
+//							e.printStackTrace();
+//						}
+//					}
+//					if (thread.bit)
+//						seedpart += factor;
+//					factor *= 2;
+//					t++;
+//				}
+//				seed[i] = seedpart;
+//			}
+//			return new SecureRandom(seed);
+//		}
 		
 		return new SecureRandom();
 	}
