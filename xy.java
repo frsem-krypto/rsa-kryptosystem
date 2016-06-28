@@ -95,7 +95,6 @@ public class xy {
 				if(b >= bytes.length){
 					break;
 				}
-<<<<<<< HEAD
 			}
 			String userHome = System.getProperty("user.home");
 			File chifm = new File("user.Home");
@@ -170,30 +169,5 @@ public class xy {
 			System.out.print(decrypted);
 		}
 	}
-=======
-    		}
-    		String userHome = System.getProperty("user.home");
-    		File chifm = new File("user.Home");
-    		
-//    		break;
-    	case "verify":
-    		
-    		
-    		break;
-    	case "sign":
-    		
-    		break;
-    	case "createnewkey":
-    		
-    		rsa.KeyPair key = rsa.createKeyPair(false, Integer.parseInt(args[1]), 100);
-    		key.save(new File(args[2]));
-    		
-    		
-    		break;
-    	default:
-    		System.err.println(args[0] + " is not a valid command");
-    	}
-    	
-    }
->>>>>>> 1972f61cb0144a55d92fd26a23f3d5629fed16ec
+
 } 
