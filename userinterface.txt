@@ -1,20 +1,21 @@
 ﻿
-rsa createnewkey [name] = neues Schluesselpaar erzeugen
-    -> 2 neue .txt Dateien im Verzeichnis erstellen
+rsa createnewkey [Schluessellaenge in Bit] [Dateiname] 
+neues Schluesselpaar erzeugen
+    -> 2 neue Dateien im Verzeichnis erstellen
 eine, mit dem eigenen privaten Schluessel und eine mit dem eigenen Oeffentlichen Schluessel
 Name dieser Dateien: 
-privatekey[name].txt
-publickey[name].txt
+publickey.rsapub
+privatekey.rsapriv
 
-
-rsa encrypt [dateiname] [Dateiname des Oeffentlichen Schluessels, des Empfaengers]
+rsa encrypt [Dateiname] [Dateiname des Oeffentlichen Schluessels, des Empfaengers]
 Eine geschriebene .txt-Datei soll mit dem Oeffentlichen Schluessel, des Empfaengers verschluesselt werden.
 
-
-rsa decrypt [dateiname] [entsprechender eigener privater schluessel]
+rsa decrypt [Dateiname] [entsprechender eigener privater schluessel]
 Eine empfangene Detei (noch verschluesselt) soll entschluesselt wiedergegeben werden (im Terminal)
 Dazu muss der richtige eigene private Schluessel genutzt werden.
 
+rsa verify [Dateiname] [Oeffentlicher Schluessel des Absenders]
+Eine empfangene signierte Datei soll verifiziert werden.
 
-
-!!!   Thomas, Leon und Luca kuemmern uns nun um die anfaengliche Programmierung des ganzen, in Zusammenarbeit mit den Schluesselprogrammierern    !!!
+rsa sign [Dateiname] [privater Schluessel]
+Eine geschriebene Datei soll signiert werden.
