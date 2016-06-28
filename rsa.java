@@ -86,6 +86,7 @@ public class rsa {
 			this.pub = pub;
 		}
 		public void save(File file) {
+			file.mkdir();
 			File publicKeyFile = new File(file, "publickey.rsapub");
 			File privateKeyFile = new File(file, "privatekey.rsapriv");
 			
@@ -150,7 +151,7 @@ public class rsa {
 	}
 
 	private static SecureRandom newRandom(boolean manualRandom) {
-		
+
 		if(manualRandom){
 			
 		} else {
