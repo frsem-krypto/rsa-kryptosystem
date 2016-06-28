@@ -86,7 +86,11 @@ public class rsa {
 			this.pub = pub;
 		}
 		public void save(File file) {
-		
+			File publicKeyFile = new File(file, "publickey.rsapub");
+			File privateKeyFile = new File(file, "privatekey.rsapriv");
+			
+			priv.save(privateKeyFile);
+			pub.save(publicKeyFile);
 		}
 		public Key getPriv() {
 			return priv;
