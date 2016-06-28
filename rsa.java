@@ -155,7 +155,7 @@ public class rsa {
 			
 		} else {
 			
-			byte[] seed = new byte[20];
+			byte[] seed = SecureRandom.getSeed(20);
 
 			RandomThread[] threads = new RandomThread[seed.length*8];
 			for(int i = 0; i < threads.length; i++){
