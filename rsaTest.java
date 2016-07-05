@@ -48,17 +48,17 @@ public class rsaTest extends TestCase {
 
 //			System.out.println("message = " + message);
 
-			BigInteger verschluesselt = rsa.chif(message, key.getPub());
+			BigInteger encrypted = rsa.chif(message, key.getPub());
 
-//			System.out.println("verschluesselt: " + verschluesselt);
+//			System.out.println("encrypted: " + encrypted);
 
-			BigInteger entschluesselt = rsa.dech(verschluesselt, key.getPriv());
+			BigInteger decrypted = rsa.dech(encrypted, key.getPriv());
 
-			assertEquals(message, entschluesselt);
+			assertEquals(message, decrypted);
 
-//			System.out.println(new String(entschluesselt.toByteArray()));
+//			System.out.println(new String(decrypted.toByteArray()));
 
-			assertEquals("Hallo!", new String(entschluesselt.toByteArray()));
+			assertEquals("Hallo!", new String(decrypted.toByteArray())); 	
 
 		}
 

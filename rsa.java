@@ -106,6 +106,7 @@ public class rsa {
 			this.pub = pub;
 		}
 		public void save(File file) {
+			file.mkdir();
 			File publicKeyFile = new File(file, "publickey.rsapub");
 			File privateKeyFile = new File(file, "privatekey.rsapriv");
 			
@@ -156,60 +157,60 @@ public class rsa {
 		
 		BigInteger n = p.multiply(q);
 		
-		BigInteger phiVonN = (p.subtract(BigInteger.ONE)).multiply(q.subtract(BigInteger.ONE));
+		BigInteger phiFromN = (p.subtract(BigInteger.ONE)).multiply(q.subtract(BigInteger.ONE));
 		
 		BigInteger e = new BigInteger(bitLength, newRandom(manualRandom));
-		while (e.gcd(phiVonN).equals(BigInteger.ONE) == false){
+		while (e.gcd(phiFromN).equals(BigInteger.ONE) == false){
 			e = e.add(BigInteger.ONE);
 		}
 		
-		BigInteger d = e.modInverse(phiVonN);
+		BigInteger d = e.modInverse(phiFromN);
 		
 		
 		return new KeyPair(new Key(d, n), new Key(e, n));
 	}
 
 	private static SecureRandom newRandom(boolean manualRandom) {
-		
-		if(manualRandom){
-			
-		} else {
-			
-			byte[] seed = SecureRandom.getSeed(20);
 
-			RandomThread[] threads = new RandomThread[seed.length*8];
-			for(int i = 0; i < threads.length; i++){
-				threads[i] = new RandomThread();
-				threads[i].start();
-				try {
-					Thread.sleep(1);
-				} catch (InterruptedException e) {
-					e.printStackTrace();
-				}
-			}
-			
-			int t = 0;
-			for (int i = 0; i < seed.length; i++) {
-				byte seedpart = Byte.MIN_VALUE;
-				long factor = 1;
-				for (int j = 0; j < 8; j++) {
-					RandomThread thread = threads[t];
-					while (!thread.finish) {
-						try {
-							Thread.sleep(10);
-						} catch (InterruptedException e) {
-							e.printStackTrace();
-						}
-					}
-					if (thread.bit)
-						seedpart += factor;
-					factor *= 2;
-					t++;
-				}
-				seed[i] = seedpart;
-			}
-			return new SecureRandom(seed);
-		}
+//		if(manualRandom){
+//			
+//		} else {
+//			
+//			byte[] seed = SecureRandom.getSeed(20);
+//
+//			RandomThread[] threads = new RandomThread[seed.length*8];
+//			for(int i = 0; i < threads.length; i++){
+//				threads[i] = new RandomThread();
+//				threads[i].start();
+//				try {
+//					Thread.sleep(1);
+//				} catch (InterruptedException e) {
+//					e.printStackTrace();
+//				}
+//			}
+//			
+//			int t = 0;
+//			for (int i = 0; i < seed.length; i++) {
+//				byte seedpart = Byte.MIN_VALUE;
+//				long factor = 1;
+//				for (int j = 0; j < 8; j++) {
+//					RandomThread thread = threads[t];
+//					while (!thread.finish) {
+//						try {
+//							Thread.sleep(10);
+//						} catch (InterruptedException e) {
+//							e.printStackTrace();
+//						}
+//					}
+//					if (thread.bit)
+//						seedpart += factor;
+//					factor *= 2;
+//					t++;
+//				}
+//				seed[i] = seedpart;
+//			}
+//			return new SecureRandom(seed);
+//		}
 		
 		return new SecureRandom();
 	}
