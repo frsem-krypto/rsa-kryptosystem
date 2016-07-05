@@ -1,3 +1,4 @@
+import java.util.Base64;
 import java.util.Random;
 import java.math.BigInteger;
 import java.util.*;
@@ -11,6 +12,7 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
@@ -44,19 +46,14 @@ public class xy {
 			File message = new File(args[1]);
 			InputStreamReader isr;
 			StringBuffer strings = new StringBuffer();
+			byte[] klartextBytes = new byte[(int) message.length()];
 
 			try {
-				isr = new InputStreamReader(new FileInputStream(message));
-				BufferedReader br = new BufferedReader(isr);
-				while(true){
-					String line = br.readLine();
-					if(line == null){
-						break;
-					}
-					strings.append(line);
-					strings.append("/n");
+				FileInputStream fis = new FileInputStream(message);
+				int readingResult = fis.read(klartextBytes);
+				if(readingResult != message.length()){
+					throw new RuntimeException("Mit der Dateilänge stimmt etwas nicht.");
 				}
-				br.close();
 
 			} catch (FileNotFoundException e) {
 				System.err.println("Fehler beim Einlesen der Nachricht: Nachricht nicht gefunden");
@@ -72,33 +69,33 @@ public class xy {
 			File file = new File(args[2]);
 			rsa.Key keypub = new rsa.Key(file);
 
-			int bytesNumber = keypub.getN().bitLength() / 8;
-			byte[] bytes = strings.toString().getBytes();
+			int blockSize = keypub.getN().bitLength() / 8;
+			//byte[] bytes = strings.toString().getBytes();
 
 			int b = 0;
-			StringBuilder sb = new StringBuilder();
+			ArrayList msg_encr = new ArrayList<BigInteger>();
 			while(true){
-				byte[] currentBytes = new byte[bytesNumber];
+				byte[] currentBlock = new byte[blockSize];
 
-				for(int i = 0; i < bytesNumber; i++){
-					if(b < bytes.length){
-						currentBytes[i] = bytes[b];
+				for(int i = 0; i < blockSize; i++){
+					if(b < klartextBytes.length){
+						currentBlock[i] = klartextBytes[b];
 						b++;
 					}else{
 						break;
 					}
 
 				}
-				BigInteger m = new BigInteger(currentBytes);
+				BigInteger m = new BigInteger(currentBlock);
 				BigInteger en = rsa.chif(m, keypub);
-				sb.append(new String(en.toByteArray()));
-				if(b >= bytes.length){
+				System.out.println(en);
+				msg_encr.add(en);
+				if(b >= klartextBytes.length){
 					break;
 				}
 			}
-			String userHome = System.getProperty("user.home");
-			File chifm = new File("user.Home");
-
+			File file_enc = new File(args[1] + ".encr");
+			rsa.writeBase64(file_enc, (BigInteger[]) msg_encr.toArray(new BigInteger[msg_encr.size()]));
 			break;
 		}
 		case "verify":
@@ -108,7 +105,33 @@ public class xy {
 			break;
 
 		case "sign":
-
+			break;
+		case "test_write":
+			File file = new File("test.txt");
+			byte[] bytes = {12, 23, 1, 29};
+			BigInteger[] msg = {new BigInteger("45245245"), new BigInteger("5435027548")};
+			System.out.println(new BigInteger(bytes));
+//			rsa.writeBase64(file, msg);
+//			System.out.println("msg: " + msg);
+//			
+//			InputStreamReader isr;
+//			try {
+//				isr = new InputStreamReader(new FileInputStream(file));
+//				BufferedReader br = new BufferedReader(isr);
+//				while(true){
+//					String line = br.readLine();
+//					if(line == null){
+//						break;
+//					}
+//					BigInteger msg_part = new BigInteger(Base64.getDecoder().decode(line));
+//					System.out.println(msg_part);
+//				}
+//				br.close();
+//			} catch (IOException e) {
+//				// TODO Auto-generated catch block
+//				e.printStackTrace();
+//			}
+			
 
 
 			break;
@@ -133,7 +156,7 @@ public class xy {
 	private static void decrypt_verify(String[] args, String keyEnding, String wrongKeyEndingMessage) {
 		File message = new File(args[1]);
 		InputStreamReader isr;
-		ArrayList<String> strings = new ArrayList<String>();
+		ArrayList<BigInteger> msg_encr = new ArrayList<>();
 
 		try {
 			isr = new InputStreamReader(new FileInputStream(message));
@@ -143,7 +166,9 @@ public class xy {
 				if(line == null){
 					break;
 				}
-				strings.add(line);
+				System.out.println(line);
+				BigInteger msg_part = new BigInteger(Base64.getDecoder().decode(line));
+				msg_encr.add(msg_part);
 			}
 			br.close();
 
@@ -163,11 +188,13 @@ public class xy {
 		rsa.Key keypriv = new rsa.Key(file);
 
 
-		for(String str : strings){
-			BigInteger m = new BigInteger(str.getBytes());
+		for(BigInteger msg_part : msg_encr){
+			BigInteger m = msg_part;
 			BigInteger decrypted = rsa.dech(m, keypriv);
-			System.out.print(decrypted);
+			for(byte b : decrypted.toByteArray()){
+				System.out.println((char) b);
 		}
+		System.out.println();
 	}
 
-} 
+}}

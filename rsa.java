@@ -59,18 +59,38 @@ public class rsa {
 		 *        bzw. auf Wunsch
 		 */
 		public void save(File file){  //experimentell: funktioniert evtl. noch nicht wie vorhergesehen
-			try {
-				FileOutputStream stream = new FileOutputStream(file);
-			
-				String base64exp = Base64.getEncoder().encodeToString(this.exponent.toByteArray());
-				String base64N = Base64.getEncoder().encodeToString(N.toByteArray());
-				stream.write(base64exp.getBytes());
-				stream.write("\n".getBytes());
-				stream.write(base64N.getBytes());
-			} catch (Exception e) {
-				e.printStackTrace();
-			}	
+			writeBase64(file, this.exponent, this.N);
 		}
+	}
+	
+	public static void writeBase64(File file, BigInteger... values) {
+		try {
+			FileOutputStream stream = new FileOutputStream(file);
+			for(BigInteger i : values) {
+				String base64 = Base64.getEncoder().encodeToString(i.toByteArray());
+				stream.write(base64.getBytes());
+				stream.write("\n".getBytes());
+			}
+			stream.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}	
+	}
+	
+	public static BigInteger[] readBase64(File file){
+		try{
+			
+			InputStreamReader isr = new InputStreamReader(new FileInputStream(file));
+			BufferedReader br = new BufferedReader(isr);
+			
+			
+			
+			
+		} catch (Exception e){
+			e.printStackTrace();
+		}
+		
+		return null;
 	}
 	
 	public static class KeyPair
