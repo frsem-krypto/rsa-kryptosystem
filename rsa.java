@@ -137,14 +137,14 @@ public class rsa {
 		
 		BigInteger n = p.multiply(q);
 		
-		BigInteger phiVonN = (p.subtract(BigInteger.ONE)).multiply(q.subtract(BigInteger.ONE));
+		BigInteger phiFromN = (p.subtract(BigInteger.ONE)).multiply(q.subtract(BigInteger.ONE));
 		
 		BigInteger e = new BigInteger(bitLength, newRandom(manualRandom));
-		while (e.gcd(phiVonN).equals(BigInteger.ONE) == false){
+		while (e.gcd(phiFromN).equals(BigInteger.ONE) == false){
 			e = e.add(BigInteger.ONE);
 		}
 		
-		BigInteger d = e.modInverse(phiVonN);
+		BigInteger d = e.modInverse(phiFromN);
 		
 		
 		return new KeyPair(new Key(d, n), new Key(e, n));
