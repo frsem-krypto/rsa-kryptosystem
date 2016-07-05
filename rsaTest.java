@@ -58,7 +58,7 @@ public class rsaTest extends TestCase {
 
 //			System.out.println(new String(decrypted.toByteArray()));
 
-			assertEquals("Hallo!", new String(decrypted.toByteArray()));
+			assertEquals("Hallo!", new String(decrypted.toByteArray())); 	
 
 		}
 
